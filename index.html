@@ -7,11 +7,10 @@
   <meta name="description" content="Wildbet — Go Wild. Bet big, level fast. A modern crypto casino experience." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Typography: Orbitron for titles, Inter for body -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-page="home">
   <canvas id="particles" aria-hidden="true"></canvas>
 
   <header class="topbar">
@@ -19,6 +18,16 @@
       <img src="assets/logo.svg" alt="Wildbet logo" class="logo" />
       <span class="brand-name">WILDBET</span>
     </div>
+
+    <nav class="main-nav">
+      <a href="mines.html">Mines</a>
+      <a href="roulette.html">Roulette</a>
+      <a href="case-battles.html">Case Battles</a>
+      <a href="coinflip.html">Coinflip</a>
+      <a href="blackjack.html">Blackjack</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="rewards.html">Rewards</a>
+    </nav>
 
     <div class="top-actions">
       <div class="balance pill">
@@ -34,13 +43,11 @@
         <span class="level-badge" id="levelBadge">LVL 5</span>
       </div>
 
-      <button class="btn ghost" id="walletBtn" aria-label="Wallet">
-        <span class="icon">👛</span> Wallet
-      </button>
-      <button class="btn ghost" id="profileBtn" aria-label="Profile">
+      <button class="btn ghost" aria-label="Wallet"><span class="icon">👛</span> Wallet</button>
+      <a class="btn ghost" href="profile.html" aria-label="Profile">
         <span class="avatar-sm">U</span> Profile
-      </button>
-      <button class="btn outline" id="logoutBtn">Logout</button>
+      </a>
+      <button class="btn outline">Logout</button>
     </div>
   </header>
 
@@ -50,9 +57,7 @@
         <span class="chat-title">Global Chat</span>
         <span class="chat-users" id="chatUsers">1,243 online</span>
       </div>
-      <div class="chat" id="chat">
-        <!-- Messages populated by JS -->
-      </div>
+      <div class="chat" id="chat"></div>
       <div class="chat-input">
         <input type="text" placeholder="Connect wallet to chat..." disabled />
         <button class="btn small" disabled>Send</button>
@@ -65,10 +70,11 @@
           <h1 class="headline">GO WILD — BET BIG, LEVEL FAST.</h1>
           <p class="subhead">Smooth animations. Electric wins. Provably fair. Level up and boost rakeback.</p>
           <div class="hero-ctas">
-            <button class="btn primary" id="depositBtn">Deposit</button>
-            <button class="btn glow" id="playNowBtn">Play Now</button>
+            <button class="btn primary">Deposit</button>
+            <a class="btn glow" href="mines.html">Play Mines</a>
           </div>
         </div>
+
         <div class="hero-stats">
           <div class="stat-card">
             <span class="stat-label">Active Users</span>
@@ -80,9 +86,7 @@
           </div>
           <div class="stat-card">
             <span class="stat-label">Recent Big Wins</span>
-            <div class="carousel" id="winsCarousel">
-              <!-- Carousel items injected -->
-            </div>
+            <div class="carousel" id="winsCarousel"></div>
           </div>
         </div>
       </section>
@@ -90,26 +94,15 @@
       <section class="games">
         <h2 class="section-title">Featured Games</h2>
         <div class="game-grid">
-          <!-- Mines -->
           <article class="game-card" data-game="mines">
+            <a class="card-link" href="mines.html" aria-label="Play Mines"></a>
             <div class="preview mines">
               <div class="grid">
-                <!-- 5x5 visual tiles -->
-                <div class="row">
-                  <span></span><span class="glow"></span><span></span><span></span><span></span>
-                </div>
-                <div class="row">
-                  <span></span><span></span><span></span><span class="glow"></span><span></span>
-                </div>
-                <div class="row">
-                  <span></span><span></span><span></span><span></span><span></span>
-                </div>
-                <div class="row">
-                  <span></span><span></span><span class="glow"></span><span></span><span></span>
-                </div>
-                <div class="row">
-                  <span></span><span></span><span></span><span></span><span class="glow"></span>
-                </div>
+                <div class="row"><span></span><span class="glow"></span><span></span><span></span><span></span></div>
+                <div class="row"><span></span><span></span><span></span><span class="glow"></span><span></span></div>
+                <div class="row"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="row"><span></span><span></span><span class="glow"></span><span></span><span></span></div>
+                <div class="row"><span></span><span></span><span></span><span></span><span class="glow"></span></div>
               </div>
               <div class="multiplier neon">x2.35</div>
             </div>
@@ -117,32 +110,30 @@
               <h3>MINES</h3>
               <p>Pick safe tiles. Cash out before the boom.</p>
               <div class="actions">
-                <button class="btn small" data-action="join">Join Now</button>
-                <button class="btn outline small" data-action="learn">Learn More</button>
+                <a class="btn small" href="mines.html">Play</a>
+                <a class="btn outline small" href="fairness.html">Fairness</a>
               </div>
             </div>
           </article>
 
-          <!-- Roulette -->
           <article class="game-card" data-game="roulette">
+            <a class="card-link" href="roulette.html" aria-label="Play Roulette"></a>
             <div class="preview roulette">
-              <div class="roller">
-                <div class="spinner" id="rouletteSpinner"></div>
-              </div>
+              <div class="roller"><div class="spinner"></div></div>
               <div class="multiplier neon">2x / 14x</div>
             </div>
             <div class="details">
               <h3>ROULETTE</h3>
               <p>Bet on Red, Black, or Green. Fast rounds, big hits.</p>
               <div class="actions">
-                <button class="btn small" data-action="join">Join Now</button>
-                <button class="btn outline small" data-action="learn">Learn More</button>
+                <a class="btn small" href="roulette.html">Play</a>
+                <a class="btn outline small" href="leaderboard.html">Top Wins</a>
               </div>
             </div>
           </article>
 
-          <!-- Case Battles -->
           <article class="game-card" data-game="case-battles">
+            <a class="card-link" href="case-battles.html" aria-label="Play Case Battles"></a>
             <div class="preview cases">
               <div class="case case-left"></div>
               <div class="vs">VS</div>
@@ -153,14 +144,14 @@
               <h3>CASE BATTLES</h3>
               <p>Open the same cases. Highest total takes all.</p>
               <div class="actions">
-                <button class="btn small" data-action="join">Join Now</button>
-                <button class="btn outline small" data-action="learn">Learn More</button>
+                <a class="btn small" href="case-battles.html">Play</a>
+                <a class="btn outline small" href="rewards.html">Rewards</a>
               </div>
             </div>
           </article>
 
-          <!-- Coinflip -->
           <article class="game-card" data-game="coinflip">
+            <a class="card-link" href="coinflip.html" aria-label="Play Coinflip"></a>
             <div class="preview coinflip">
               <div class="coin" id="coinPreview">
                 <div class="face heads">H</div>
@@ -172,24 +163,18 @@
               <h3>COINFLIP</h3>
               <p>Pick a side. One flip decides it all.</p>
               <div class="actions">
-                <button class="btn small" data-action="join">Join Now</button>
-                <button class="btn outline small" data-action="learn">Learn More</button>
+                <a class="btn small" href="coinflip.html">Play</a>
+                <a class="btn outline small" href="leaderboard.html">Hot Streaks</a>
               </div>
             </div>
           </article>
 
-          <!-- Blackjack -->
           <article class="game-card" data-game="blackjack">
+            <a class="card-link" href="blackjack.html" aria-label="Play Blackjack"></a>
             <div class="preview blackjack">
               <div class="table">
-                <div class="hand dealer">
-                  <div class="card back"></div>
-                  <div class="card">10♦</div>
-                </div>
-                <div class="hand player">
-                  <div class="card">A♣</div>
-                  <div class="card">9♠</div>
-                </div>
+                <div class="hand dealer"><div class="card back"></div><div class="card">10♦</div></div>
+                <div class="hand player"><div class="card">A♣</div><div class="card">9♠</div></div>
               </div>
               <div class="multiplier neon">Beat the House</div>
             </div>
@@ -197,8 +182,8 @@
               <h3>BLACKJACK</h3>
               <p>Classic rules, neon felt, satisfying hits.</p>
               <div class="actions">
-                <button class="btn small" data-action="join">Join Now</button>
-                <button class="btn outline small" data-action="learn">Learn More</button>
+                <a class="btn small" href="blackjack.html">Play</a>
+                <a class="btn outline small" href="fairness.html">Fairness</a>
               </div>
             </div>
           </article>
@@ -207,10 +192,10 @@
 
       <footer class="footer">
         <nav class="footer-links">
-          <a href="#" aria-label="Terms">Terms</a>
-          <a href="#" aria-label="Fairness">Fairness</a>
-          <a href="#" aria-label="Support">Support</a>
-          <a href="#" aria-label="Social">Social</a>
+          <a href="fairness.html" aria-label="Fairness">Fairness</a>
+          <a href="support.html" aria-label="Support">Support</a>
+          <a href="leaderboard.html" aria-label="Leaderboard">Leaderboard</a>
+          <a href="rewards.html" aria-label="Rewards">Rewards</a>
         </nav>
         <div class="tiny">© <span id="year"></span> Wildbet. Go Wild.</div>
       </footer>
