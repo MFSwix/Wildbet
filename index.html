@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wildbet — Go Wild</title>
+  <meta name="description" content="Wildbet — Go Wild. Bet big, level fast. A modern crypto casino experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Typography: Orbitron for titles, Inter for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/logo.svg" alt="Wildbet logo" class="logo" />
+      <span class="brand-name">WILDBET</span>
+    </div>
+
+    <div class="top-actions">
+      <div class="balance pill">
+        <span class="label">Balance</span>
+        <span class="value" id="balanceValue">$1,000.00</span>
+      </div>
+
+      <div class="level pill">
+        <span class="label">Level</span>
+        <div class="level-bar">
+          <div class="level-fill" id="levelFill" style="width: 35%"></div>
+        </div>
+        <span class="level-badge" id="levelBadge">LVL 5</span>
+      </div>
+
+      <button class="btn ghost" id="walletBtn" aria-label="Wallet">
+        <span class="icon">👛</span> Wallet
+      </button>
+      <button class="btn ghost" id="profileBtn" aria-label="Profile">
+        <span class="avatar-sm">U</span> Profile
+      </button>
+      <button class="btn outline" id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="chat-header">
+        <span class="chat-title">Global Chat</span>
+        <span class="chat-users" id="chatUsers">1,243 online</span>
+      </div>
+      <div class="chat" id="chat">
+        <!-- Messages populated by JS -->
+      </div>
+      <div class="chat-input">
+        <input type="text" placeholder="Connect wallet to chat..." disabled />
+        <button class="btn small" disabled>Send</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="hero">
+        <div class="hero-copy">
+          <h1 class="headline">GO WILD — BET BIG, LEVEL FAST.</h1>
+          <p class="subhead">Smooth animations. Electric wins. Provably fair. Level up and boost rakeback.</p>
+          <div class="hero-ctas">
+            <button class="btn primary" id="depositBtn">Deposit</button>
+            <button class="btn glow" id="playNowBtn">Play Now</button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-label">Active Users</span>
+            <span class="stat-value" id="statUsers">1,237</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Total Wagered</span>
+            <span class="stat-value" id="statWagered">$4,213,580</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Recent Big Wins</span>
+            <div class="carousel" id="winsCarousel">
+              <!-- Carousel items injected -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="games">
+        <h2 class="section-title">Featured Games</h2>
+        <div class="game-grid">
+          <!-- Mines -->
+          <article class="game-card" data-game="mines">
+            <div class="preview mines">
+              <div class="grid">
+                <!-- 5x5 visual tiles -->
+                <div class="row">
+                  <span></span><span class="glow"></span><span></span><span></span><span></span>
+                </div>
+                <div class="row">
+                  <span></span><span></span><span></span><span class="glow"></span><span></span>
+                </div>
+                <div class="row">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="row">
+                  <span></span><span></span><span class="glow"></span><span></span><span></span>
+                </div>
+                <div class="row">
+                  <span></span><span></span><span></span><span></span><span class="glow"></span>
+                </div>
+              </div>
+              <div class="multiplier neon">x2.35</div>
+            </div>
+            <div class="details">
+              <h3>MINES</h3>
+              <p>Pick safe tiles. Cash out before the boom.</p>
+              <div class="actions">
+                <button class="btn small" data-action="join">Join Now</button>
+                <button class="btn outline small" data-action="learn">Learn More</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Roulette -->
+          <article class="game-card" data-game="roulette">
+            <div class="preview roulette">
+              <div class="roller">
+                <div class="spinner" id="rouletteSpinner"></div>
+              </div>
+              <div class="multiplier neon">2x / 14x</div>
+            </div>
+            <div class="details">
+              <h3>ROULETTE</h3>
+              <p>Bet on Red, Black, or Green. Fast rounds, big hits.</p>
+              <div class="actions">
+                <button class="btn small" data-action="join">Join Now</button>
+                <button class="btn outline small" data-action="learn">Learn More</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Battles -->
+          <article class="game-card" data-game="case-battles">
+            <div class="preview cases">
+              <div class="case case-left"></div>
+              <div class="vs">VS</div>
+              <div class="case case-right"></div>
+              <div class="flare"></div>
+            </div>
+            <div class="details">
+              <h3>CASE BATTLES</h3>
+              <p>Open the same cases. Highest total takes all.</p>
+              <div class="actions">
+                <button class="btn small" data-action="join">Join Now</button>
+                <button class="btn outline small" data-action="learn">Learn More</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Coinflip -->
+          <article class="game-card" data-game="coinflip">
+            <div class="preview coinflip">
+              <div class="coin" id="coinPreview">
+                <div class="face heads">H</div>
+                <div class="face tails">T</div>
+              </div>
+              <div class="multiplier neon">2x</div>
+            </div>
+            <div class="details">
+              <h3>COINFLIP</h3>
+              <p>Pick a side. One flip decides it all.</p>
+              <div class="actions">
+                <button class="btn small" data-action="join">Join Now</button>
+                <button class="btn outline small" data-action="learn">Learn More</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blackjack -->
+          <article class="game-card" data-game="blackjack">
+            <div class="preview blackjack">
+              <div class="table">
+                <div class="hand dealer">
+                  <div class="card back"></div>
+                  <div class="card">10♦</div>
+                </div>
+                <div class="hand player">
+                  <div class="card">A♣</div>
+                  <div class="card">9♠</div>
+                </div>
+              </div>
+              <div class="multiplier neon">Beat the House</div>
+            </div>
+            <div class="details">
+              <h3>BLACKJACK</h3>
+              <p>Classic rules, neon felt, satisfying hits.</p>
+              <div class="actions">
+                <button class="btn small" data-action="join">Join Now</button>
+                <button class="btn outline small" data-action="learn">Learn More</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <nav class="footer-links">
+          <a href="#" aria-label="Terms">Terms</a>
+          <a href="#" aria-label="Fairness">Fairness</a>
+          <a href="#" aria-label="Support">Support</a>
+          <a href="#" aria-label="Social">Social</a>
+        </nav>
+        <div class="tiny">© <span id="year"></span> Wildbet. Go Wild.</div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
